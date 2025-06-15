@@ -1,10 +1,13 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from transformers import pipeline
+from huggingface_hub import login
+import os
 
-app = FastAPI(title="Review Classifier API")
+app = FastAPI()
 
-# Load the model once on startup
+login(token=os.getenv("HUGGINGFACE_HUB_TOKEN"))
+
 classifier = pipeline("text-classification", model="prajjwal888/review-classifier")
 
 class ReviewInput(BaseModel):
