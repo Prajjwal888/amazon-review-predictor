@@ -8,7 +8,7 @@ app = FastAPI()
 
 login(token=os.getenv("HUGGINGFACE_HUB_TOKEN"))
 
-classifier = pipeline("text-classification", model="prajjwal888/review-classifier")
+classifier = pipeline("text-classification", model="prajjwal888/roberta-finetuned-review-classifier")
 
 class ReviewInput(BaseModel):
     text: str
