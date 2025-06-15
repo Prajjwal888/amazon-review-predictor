@@ -17,7 +17,12 @@ app.add_middleware(
 
 login(token=os.getenv("HUGGINGFACE_HUB_TOKEN"))
 
-classifier = pipeline("text-classification", model="prajjwal888/roberta-finetuned-review-classifier")
+classifier = pipeline(
+    "text-classification",
+    model="prajjwal888/roberta-finetuned-review-classifier",
+    truncation=True,     
+    max_length=512
+)
 
 class ReviewInput(BaseModel):
     text: str
